@@ -8,15 +8,20 @@ const groups = groupByEmployer(resume.work);
   {
     groups.map((group) => (
       <li class="employer">
-        <h3 class="employer__name">
-          {group.url ? (
-            <a href={group.url} rel="noopener" target="_blank">
-              {group.name}
-            </a>
-          ) : (
-            group.name
-          )}
-        </h3>
+        <div class="employer__head">
+          <h3 class="employer__name">
+            {group.url ? (
+              <a href={group.url} rel="noopener" target="_blank">
+                {group.name}
+              </a>
+            ) : (
+              group.name
+            )}
+          </h3>
+          {group.roles.length > 1 && <span class="employer__range">{group.range}</span>}
+        </div>
+
+        {group.note && <p class="employer__note">{group.note}</p>}
 
         <ol class="roles">
           {group.roles.map((role) => (
@@ -63,10 +68,34 @@ const groups = groupByEmployer(resume.work);
     margin-top: 2.5rem;
   }
 
+  .employer__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.15rem 1rem;
+  }
+
   .employer__name {
-    margin-bottom: 0.9rem;
     font-size: 1.05rem;
     letter-spacing: -0.01em;
+  }
+
+  .employer__range {
+    color: var(--fg-subtle);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .employer__note {
+    margin: 0.3rem 0 0;
+    color: var(--fg-subtle);
+    font-size: 0.78rem;
+  }
+
+  .employer__head + .roles,
+  .employer__note + .roles {
+    margin-top: 0.9rem;
   }
 
   .employer__name a {

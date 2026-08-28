@@ -48,7 +48,9 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: dist
+          # The Cloudflare adapter splits the build into dist/client and
+          # dist/server; only the client half is the static site.
+          path: dist/client
 
   deploy:
     name: Deploy

@@ -2,96 +2,93 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Clark Tomlinson",
-    "label": "Frontend Software Architect",
+    "label": "Staff Software Engineer",
     "image": "/headshot.jpg",
-    "email": "clark@clarkt.com",
+    "email": "fallen013@gmail.com",
     "url": "https://clarkt.com",
-    "summary": "Frontend architect and full-stack engineer. I set technical direction for large front-end codebases \u2014 standards, tooling, build systems, and the migration paths that get teams off legacy platforms without stopping feature work. Comfortable everywhere from a React render loop to a Go service to a Terraform module, and happiest solving problems at a scale where the simple answer stops working.",
+    "summary": "Staff software engineer with 15+ years scaling consumer SaaS platforms. Track record of leading frontend architecture across large engineering organizations and turning legacy systems into modern, performant ones. Comfortable owning technical direction across teams while staying hands-on in the codebase.",
     "location": {
       "city": "Charlotte",
       "region": "NC",
       "countryCode": "US"
     },
     "profiles": [
-      {
-        "network": "GitHub",
-        "username": "th3fallen",
-        "url": "https://github.com/th3fallen"
-      },
-      {
-        "network": "LinkedIn",
-        "username": "th3fallen",
-        "url": "https://www.linkedin.com/in/th3fallen/"
-      },
-      {
-        "network": "X",
-        "username": "th3fallen",
-        "url": "https://twitter.com/th3fallen"
-      }
+      { "network": "GitHub", "username": "th3fallen", "url": "https://github.com/th3fallen" },
+      { "network": "LinkedIn", "username": "th3fallen", "url": "https://www.linkedin.com/in/th3fallen/" },
+      { "network": "X", "username": "th3fallen", "url": "https://twitter.com/th3fallen" }
     ]
   },
   "work": [
     {
+      "name": "Rippling",
+      "position": "Staff Software Engineer",
+      "location": "Remote",
+      "url": "https://rippling.com",
+      "startDate": "2025-10",
+      "endDate": "",
+      "highlights": [
+        "Leading the migration of 1M+ daily active When I Work users onto the Rippling platform post-acquisition, spanning Python/Django, Go, and React/TypeScript",
+        "Mapping legacy scheduling and time-tracking systems onto Rippling's workforce management primitives with zero disruption to production traffic"
+      ]
+    },
+    {
       "name": "When I Work",
-      "position": "Frontend Software Architect",
+      "note": "Acquired by Rippling, October 2025",
+      "position": "Principal Software Engineer (Software Architect)",
       "location": "Remote",
       "url": "https://wheniwork.com",
-      "startDate": "2023",
-      "endDate": "",
-      "summary": "Own the architecture of every front-end application \u2014 technical standards, tooling, and the shared patterns product teams build on.",
+      "startDate": "2023-04",
+      "endDate": "2025-10",
       "highlights": [
-        "Define front-end technical standards for tooling, code, and architecture across all product teams",
-        "Provide technical leadership to multiple product front-end teams and improve how they work together",
-        "Write the technical documentation and processes for current and future platform technology",
-        "Partner with engineers across teams to find pain points and ship shared solutions"
+        "Set frontend architecture and technical standards for a 60-engineer, 8-product-team organization serving 1M+ daily active users",
+        "Cut onboarding time for new engineers and shipped features faster by standardizing tooling, patterns, and review processes across every full-stack team",
+        "Eliminated duplicate infrastructure solutions across the codebase by aligning product teams on shared architecture decisions through documentation and reviews",
+        "Shipped organization-wide technical changes by partnering with staff engineers across backend, mobile, and platform through the Architecture Guild"
       ]
     },
     {
       "name": "When I Work",
-      "position": "Principal Full Stack Developer",
+      "position": "Staff Software Engineer",
       "location": "Remote",
-      "startDate": "2022",
-      "endDate": "2023",
-      "summary": "Led an engineering team while driving front-end architecture and platform health across the org.",
+      "startDate": "2022-04",
+      "endDate": "2023-04",
       "highlights": [
-        "Planned future initiatives alongside product and program management",
-        "Led an assigned team of engineers, including code review and mentorship",
-        "Maintained front-end packages, architecture, and shared patterns",
-        "Drove Architecture Guild initiatives from proposal through execution"
+        "Led a team of 5 engineers while also serving as the technical owner of frontend development across all 8+ product teams",
+        "Mentored senior and mid-level engineers through code review, design review, and 1:1 technical coaching; multiple direct reports promoted during tenure",
+        "Set the technical roadmap for frontend infrastructure in partnership with product leadership"
       ]
     },
     {
       "name": "When I Work",
-      "position": "Lead Full Stack Developer",
+      "position": "Lead Software Engineer",
       "location": "Remote",
-      "startDate": "2017",
-      "endDate": "2022",
-      "summary": "Built and led work on hourly workforce management \u2014 scheduling, time tracking, and shift trading \u2014 used by millions of managers and employees.",
+      "startDate": "2019-09",
+      "endDate": "2022-04",
       "highlights": [
-        "Shipped features end to end, from UI through REST API and lean microservices",
-        "Optimized existing functionality for performance at production scale",
-        "Analyzed product data and iterated on what shipped"
+        "Architected and shipped a new React-based frontend platform from the ground up, replacing a 7-year-old Backbone/jQuery codebase across the entire product",
+        "Migrated every product feature onto the new platform by embedding rotationally with each engineering team, leading the cutover and training engineers on the new patterns",
+        "Rewrote the Scheduler — When I Work's flagship product — delivering a 12x throughput improvement and enabling accounts with thousands of users and tens of thousands of shifts, up from a prior ceiling of ~100 users and ~50 shifts"
       ]
     },
     {
-      "name": "Candor Insurance",
-      "position": "Chief Architect",
+      "name": "When I Work",
+      "position": "Senior Software Engineer",
       "location": "Remote",
-      "startDate": "2017",
-      "endDate": "2018",
-      "summary": "Set the technical architecture for the platform.",
-      "highlights": []
+      "startDate": "2017-11",
+      "endDate": "2019-09",
+      "highlights": [
+        "Selected to architect the new React frontend platform after identifying scaling limitations in the existing Backbone/jQuery stack",
+        "Took ownership of frontend health across all engineering teams, establishing the patterns that became the foundation of the company-wide migration"
+      ]
     },
     {
       "name": "When I Work",
-      "position": "Full Stack Developer",
+      "position": "Software Engineer",
       "location": "Remote",
-      "startDate": "2014",
-      "endDate": "2017",
-      "summary": "Full-stack product development \u2014 beautiful UI through complex server-side applications, database architecture, and the REST API.",
+      "startDate": "2015-08",
+      "endDate": "2017-11",
       "highlights": [
-        "Rolled out new features and reacted to product data to improve them",
-        "Worked across UI, server-side applications, database architecture, and microservices"
+        "Built features across scheduling, time tracking, and shift trading in a Backbone/jQuery and PHP stack serving hundreds of thousands of users"
       ]
     },
     {
@@ -99,79 +96,21 @@
       "position": "Software Engineer",
       "location": "Remote",
       "url": "https://owncloud.com",
-      "startDate": "2014",
-      "endDate": "2015",
-      "summary": "Maintained and expanded the core of the product alongside 300+ globally distributed contributors.",
+      "startDate": "2014-08",
+      "endDate": "2015-08",
       "highlights": [
-        "Worked in OO PHP, jQuery, HTML5, CSS3, and RESTful services",
-        "Collaborated with a large open-source contributor community"
+        "Maintained and extended the core of an open-source file sync and share platform alongside 300+ globally distributed contributors using PHP, jQuery, and REST APIs"
       ]
     },
     {
-      "name": "INSP",
-      "position": "Web Developer",
-      "location": "Fort Mill, SC",
-      "startDate": "2013",
-      "endDate": "2014",
-      "summary": "Managed 50+ sites and the infrastructure behind them.",
+      "name": "INSP, LLC",
+      "position": "Senior Web Developer / Web Developer",
+      "location": "Indian Land, SC",
+      "startDate": "2011-09",
+      "endDate": "2014-08",
       "highlights": [
-        "Managed 500+ domains, external DNS, SSL certificates, and non-cloud server environments",
-        "Built custom plugins and sites integrating local and third-party APIs",
-        "Worked in OO PHP with Laravel components inside a WordPress ecosystem"
-      ]
-    },
-    {
-      "name": "The Inspiration Networks",
-      "position": "Web Developer",
-      "location": "Fort Mill, SC",
-      "startDate": "2011",
-      "endDate": "2013",
-      "summary": "Managed 50+ sites, DNS, certificates, and server environments.",
-      "highlights": [
-        "Built and consumed RESTful APIs",
-        "Developed custom plugins and websites in OO PHP, HTML5, CSS3, and jQuery"
-      ]
-    },
-    {
-      "name": "bitflip technologies",
-      "position": "Web Developer",
-      "location": "Charlotte, NC",
-      "startDate": "2011",
-      "endDate": "2011",
-      "summary": "Integrated sites from HTML/CSS into a custom CodeIgniter-based PHP CMS.",
-      "highlights": []
-    },
-    {
-      "name": "Cloudoru LLC",
-      "position": "Head Web Developer",
-      "location": "Remote",
-      "startDate": "2011",
-      "endDate": "2011",
-      "summary": "Oversaw a team of 5 web developers plus the CMS and servers behind the sites.",
-      "highlights": []
-    },
-    {
-      "name": "MLG, INC",
-      "position": "Web Developer",
-      "location": "New York, NY",
-      "startDate": "2008",
-      "endDate": "2009",
-      "summary": "PHP, OOP, JavaScript, Perl, MySQL, and Linux.",
-      "highlights": [
-        "Maintained existing sites and implemented new functionality",
-        "Trained employees and wrote system restoration documentation"
-      ]
-    },
-    {
-      "name": "Combat Arenas, LLC",
-      "position": "Head Web Architect",
-      "location": "Remote",
-      "startDate": "2007",
-      "endDate": "2008",
-      "summary": "Modernized legacy systems and maintained the existing product.",
-      "highlights": [
-        "Migrated a legacy MS Access application to PHP/MySQL",
-        "Restructured a large Perl program and wrote the technical documentation"
+        "Managed 50+ websites and 500+ domains across non-cloud server environments, including DNS, SSL certificates, and on-prem infrastructure",
+        "Built custom WordPress plugins and integrations using object-oriented PHP, Laravel components, and third-party REST APIs"
       ]
     }
   ],
@@ -179,18 +118,16 @@
     {
       "institution": "Strayer University",
       "area": "Computer Science",
-      "studyType": "Bachelor of Science",
-      "location": "Charleston, SC",
+      "studyType": "B.S.",
       "startDate": "2008",
       "endDate": "2011"
     }
   ],
   "awards": [
     {
-      "title": "MVP Award",
-      "date": "2018",
+      "title": "Company MVP",
       "awarder": "When I Work",
-      "summary": "For leadership in architecture and the migration off the legacy platform to React/Redux."
+      "summary": "For impact across the frontend platform migration and the Scheduler rewrite."
     },
     {
       "title": "Star Developer",
@@ -201,49 +138,20 @@
   ],
   "skills": [
     {
+      "name": "Languages",
+      "keywords": ["TypeScript", "JavaScript", "Go", "Python"]
+    },
+    {
       "name": "Frontend",
-      "keywords": [
-        "React",
-        "TypeScript",
-        "Redux",
-        "CSS",
-        "Design Systems",
-        "Web Performance"
-      ]
+      "keywords": ["React", "Redux", "React Testing Library", "HTML5", "CSS3"]
     },
     {
-      "name": "Backend",
-      "keywords": [
-        "Go",
-        "PHP",
-        "Symfony",
-        "Python",
-        "Django",
-        "Node.js",
-        "REST",
-        "GraphQL"
-      ]
+      "name": "Backend & infra",
+      "keywords": ["Django", "Node.js", "gRPC", "REST", "AWS"]
     },
     {
-      "name": "Platform",
-      "keywords": [
-        "Kubernetes",
-        "Terraform",
-        "AWS",
-        "Docker",
-        "CI/CD",
-        "Observability"
-      ]
-    },
-    {
-      "name": "Architecture",
-      "keywords": [
-        "Monorepos",
-        "Build Tooling",
-        "Migration Strategy",
-        "Technical Standards",
-        "Mentorship"
-      ]
+      "name": "Tooling",
+      "keywords": ["GitLab CI", "Webpack", "Jest"]
     }
   ]
 }

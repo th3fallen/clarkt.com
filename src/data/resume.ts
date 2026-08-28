@@ -27,6 +27,11 @@ export interface Work {
   endDate?: string;
   summary?: string;
   highlights?: string[];
+  /**
+   * Employer-level context rather than role-level — an acquisition, a rename.
+   * Set it on any one role at that employer; the whole group renders it once.
+   */
+  note?: string;
 }
 
 export interface Education {
@@ -99,17 +104,35 @@ export function yearsOfExperience(work: Work[]): number {
  * unrelated jobs. Non-consecutive stints at the same place stay separate,
  * which is what you want when someone boomerangs.
  */
-export function groupByEmployer(work: Work[]): { name: string; url?: string; roles: Work[] }[] {
-  const groups: { name: string; url?: string; roles: Work[] }[] = [];
+export function groupByEmployer(
+  work: Work[],
+): { name: string; url?: string; note?: string; range: string; roles: Work[] }[] {
+  const groups: { name: string; url?: string; note?: string; range: string; roles: Work[] }[] = [];
 
   for (const entry of work) {
     const last = groups.at(-1);
     if (last && last.name === entry.name) {
       last.roles.push(entry);
       last.url ??= entry.url;
+      last.note ??= entry.note;
     } else {
-      groups.push({ name: entry.name, url: entry.url, roles: [entry] });
+      groups.push({
+        name: entry.name,
+        url: entry.url,
+        note: entry.note,
+        range: '',
+        roles: [entry],
+      });
     }
+  }
+
+  // Span the whole tenure: earliest start (the last role listed) to the latest
+  // end (the first). Shown next to the employer so a long tenure reads at a
+  // glance without adding up the individual roles.
+  for (const group of groups) {
+    const first = group.roles[0]!;
+    const last = group.roles.at(-1)!;
+    group.range = formatRange(last.startDate, first.endDate);
   }
 
   return groups;
