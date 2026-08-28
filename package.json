@@ -9,16 +9,18 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "import:linkedin": "node scripts/linkedin-import.mjs"
+    "import:linkedin": "node scripts/linkedin-import.mjs",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.2.5",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.9"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "typescript": "^6.0.3",
-    "wrangler": "^4.127.0"
+    "wrangler": "^4.127.1"
   },
   "engines": {
     "node": ">=22"
