@@ -1,0 +1,200 @@
+---
+import { resume, groupByEmployer, formatRange, isCurrent } from '../data/resume';
+
+const groups = groupByEmployer(resume.work);
+---
+
+<ol class="timeline">
+  {
+    groups.map((group) => (
+      <li class="employer">
+        <h3 class="employer__name">
+          {group.url ? (
+            <a href={group.url} rel="noopener" target="_blank">
+              {group.name}
+            </a>
+          ) : (
+            group.name
+          )}
+        </h3>
+
+        <ol class="roles">
+          {group.roles.map((role) => (
+            <li class="role">
+              <div class="role__marker" aria-hidden="true">
+                <span class:list={['role__dot', isCurrent(role) && 'role__dot--current']} />
+              </div>
+
+              <div class="role__content">
+                <div class="role__head">
+                  <h4 class="role__title">{role.position}</h4>
+                  <span class="role__dates">
+                    {formatRange(role.startDate, role.endDate)}
+                    {role.location && <span class="role__location"> · {role.location}</span>}
+                  </span>
+                </div>
+
+                {role.summary && <p class="role__summary">{role.summary}</p>}
+
+                {role.highlights && role.highlights.length > 0 && (
+                  <ul class="role__highlights">
+                    {role.highlights.map((highlight) => (
+                      <li>{highlight}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .employer + .employer {
+    margin-top: 2.5rem;
+  }
+
+  .employer__name {
+    margin-bottom: 0.9rem;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  .employer__name a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .employer__name a:hover {
+    color: var(--accent);
+  }
+
+  .roles {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .role {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: 0 1rem;
+  }
+
+  /* The connecting rail lives on the marker column so it spans each role
+     exactly, and stops cleanly after the last one. */
+  .role__marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .role__marker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .role:last-child .role__marker::before {
+    bottom: auto;
+    height: 0.6rem;
+  }
+
+  .role__dot {
+    position: relative;
+    z-index: 1;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: 0.55rem;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+
+  .role__dot--current {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+  }
+
+  .role__content {
+    padding-bottom: 1.75rem;
+  }
+
+  .role:last-child .role__content {
+    padding-bottom: 0;
+  }
+
+  .role__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.15rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .role__title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--fg);
+  }
+
+  .role__dates {
+    color: var(--fg-subtle);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .role__location {
+    color: var(--fg-subtle);
+  }
+
+  .role__summary {
+    margin-bottom: 0.6rem;
+    color: var(--fg-muted);
+  }
+
+  .role__highlights {
+    display: grid;
+    gap: 0.3rem;
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+  }
+
+  .role__highlights li {
+    display: grid;
+    grid-template-columns: 1.75ch 1fr;
+    max-width: var(--measure);
+  }
+
+  .role__highlights li::before {
+    content: '·';
+    color: var(--accent);
+  }
+
+  @media print {
+    .employer + .employer {
+      margin-top: 1.25rem;
+    }
+
+    .employer,
+    .role {
+      break-inside: avoid;
+    }
+
+    .role__content {
+      padding-bottom: 0.85rem;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import { resume } from '../data/resume';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { basics } = resume;
+const {
+  title = `${basics.name} — ${basics.label}`,
+  description = basics.summary?.slice(0, 155),
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://clarkt.com');
+
+// JSON-LD keeps the resume machine-readable for search and for anything that
+// wants to consume it as structured data.
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: basics.name,
+  jobTitle: basics.label,
+  url: basics.url,
+  email: basics.email ? `mailto:${basics.email}` : undefined,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: basics.location?.city,
+    addressRegion: basics.location?.region,
+    addressCountry: basics.location?.countryCode,
+  },
+  sameAs: basics.profiles?.map((profile) => profile.url),
+  worksFor: { '@type': 'Organization', name: resume.work[0]?.name },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+    />
+
+    <script is:inline>
+      // Applied before first paint so an explicit theme choice never flashes
+      // the wrong palette.
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.dataset.theme = stored;
+          }
+        } catch {
+          /* private mode, blocked storage — system preference is fine */
+        }
+      })();
+    </script>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>

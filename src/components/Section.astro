@@ -1,0 +1,70 @@
+---
+interface Props {
+  id: string;
+  /** The command rendered after the prompt, e.g. `cat experience.md`. */
+  command: string;
+  /** Accessible heading text — what the section actually is. */
+  heading: string;
+}
+
+const { id, command, heading } = Astro.props;
+---
+
+<section class="section" id={id} aria-labelledby={`${id}-heading`}>
+  <h2 class="section__heading" id={`${id}-heading`}>
+    <span class="section__prompt" aria-hidden="true">$</span>
+    <span class="section__command" aria-hidden="true">{command}</span>
+    <span class="visually-hidden">{heading}</span>
+  </h2>
+
+  <div class="section__body">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: clamp(2rem, 5vw, 3.25rem);
+    border-top: 1px solid var(--border);
+    /* Clears the sticky titlebar when linked to by anchor. */
+    scroll-margin-top: 4rem;
+  }
+
+  .section:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .section__heading {
+    display: flex;
+    gap: 0.6ch;
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .section__prompt {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .section__command {
+    color: var(--fg-muted);
+  }
+
+  @media print {
+    .section {
+      padding-block: 1rem;
+      break-inside: avoid;
+    }
+
+    .section__heading {
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .section__command {
+      color: #000;
+    }
+  }
+</style>

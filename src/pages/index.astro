@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import TerminalWindow from '../components/TerminalWindow.astro';
+import Header from '../components/Header.astro';
+import Section from '../components/Section.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Credentials from '../components/Credentials.astro';
+import { resume } from '../data/resume';
+
+const { basics } = resume;
+const year = new Date().getFullYear();
+---
+
+<Base>
+  <TerminalWindow path="clark@clarkt.com — ~/resume">
+    <Header />
+
+    <main id="main">
+      {
+        basics.summary && (
+          <Section id="about" command="cat about.md" heading="About">
+            <p class="summary">{basics.summary}</p>
+          </Section>
+        )
+      }
+
+      <Section id="experience" command="git log --author=clark" heading="Experience">
+        <Experience />
+      </Section>
+
+      <Section id="skills" command="ls -1 skills/" heading="Skills">
+        <Skills />
+      </Section>
+
+      <Section id="credentials" command="cat education.md awards.md" heading="Education and awards">
+        <Credentials />
+      </Section>
+
+      <Section id="contact" command="whoami --contact" heading="Contact">
+        <div class="contact">
+          {
+            basics.email && (
+              <a class="contact__primary" href={`mailto:${basics.email}`}>
+                {basics.email}
+              </a>
+            )
+          }
+
+          <ul class="contact__links">
+            {
+              basics.profiles?.map((profile) => (
+                <li>
+                  <a href={profile.url} rel="me noopener" target="_blank">
+                    {profile.network.toLowerCase()}/{profile.username}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </Section>
+    </main>
+
+    <footer class="footer">
+      <span class="footer__prompt" aria-hidden="true">$</span>
+      <span>
+        &copy; {year} {basics.name} · built with Astro ·
+        <a href="/resume.json">resume.json</a>
+      </span>
+      <span class="footer__cursor" aria-hidden="true"></span>
+    </footer>
+  </TerminalWindow>
+</Base>
+
+<style>
+  .summary {
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+  }
+
+  .contact {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .contact__primary {
+    font-size: clamp(1rem, 0.85rem + 0.9vw, 1.4rem);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    justify-self: start;
+  }
+
+  .contact__primary:hover {
+    text-decoration: underline;
+  }
+
+  .contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .contact__links a {
+    text-decoration: none;
+  }
+
+  .contact__links a:hover {
+    text-decoration: underline;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75ch;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+    color: var(--fg-subtle);
+    font-size: 0.75rem;
+  }
+
+  .footer__prompt {
+    color: var(--accent);
+  }
+
+  .footer__cursor {
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    background: var(--fg-subtle);
+    animation: footer-blink 1.2s step-end infinite;
+  }
+
+  @keyframes footer-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media print {
+    .footer {
+      display: none;
+    }
+  }
+</style>

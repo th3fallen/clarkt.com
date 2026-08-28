@@ -1,0 +1,236 @@
+/* ---------------------------------------------------------------------------
+   Tokens
+
+   Light is defined on bare :root so the palette always resolves. Dark is
+   layered on twice: once for `prefers-color-scheme` (guarded so an explicit
+   light choice wins) and once for an explicit `data-theme="dark"`.
+--------------------------------------------------------------------------- */
+
+:root {
+  --bg: #f6f7f4;
+  --bg-elevated: #ffffff;
+  --bg-inset: #eceee8;
+  --chrome: #e4e6e0;
+  --border: #d6d9d0;
+  --border-strong: #b9bdb2;
+
+  --fg: #1b1f18;
+  --fg-muted: #5b6157;
+  --fg-subtle: #8b9184;
+
+  --accent: #16794a;
+  --accent-bg: rgba(22, 121, 74, 0.1);
+  --accent-glow: transparent;
+
+  --selection: rgba(22, 121, 74, 0.22);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px -12px rgba(0, 0, 0, 0.18);
+
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', SFMono-Regular, Menlo,
+    Monaco, 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+
+  --measure: 68ch;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0b0d0c;
+    --bg-elevated: #111413;
+    --bg-inset: #171b19;
+    --chrome: #1a1e1c;
+    --border: #242a27;
+    --border-strong: #39413c;
+
+    --fg: #d7ded8;
+    --fg-muted: #8b978f;
+    --fg-subtle: #5f6b64;
+
+    --accent: #4ade80;
+    --accent-bg: rgba(74, 222, 128, 0.12);
+    --accent-glow: rgba(74, 222, 128, 0.28);
+
+    --selection: rgba(74, 222, 128, 0.26);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0d0c;
+  --bg-elevated: #111413;
+  --bg-inset: #171b19;
+  --chrome: #1a1e1c;
+  --border: #242a27;
+  --border-strong: #39413c;
+
+  --fg: #d7ded8;
+  --fg-muted: #8b978f;
+  --fg-subtle: #5f6b64;
+
+  --accent: #4ade80;
+  --accent-bg: rgba(74, 222, 128, 0.12);
+  --accent-glow: rgba(74, 222, 128, 0.28);
+
+  --selection: rgba(74, 222, 128, 0.26);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: var(--gutter) var(--gutter) calc(var(--gutter) * 2);
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    var(--accent-bg),
+    transparent 70%
+  );
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: clamp(0.875rem, 0.82rem + 0.25vw, 0.95rem);
+  line-height: 1.7;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: var(--measure);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+--------------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.5rem 0.85rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Print — the resume should survive Cmd+P as a clean document.
+--------------------------------------------------------------------------- */
+
+@media print {
+  :root {
+    --bg: #fff;
+    --bg-elevated: #fff;
+    --bg-inset: #fff;
+    --chrome: #fff;
+    --border: #ccc;
+    --fg: #000;
+    --fg-muted: #333;
+    --fg-subtle: #666;
+    --accent: #000;
+    --shadow: none;
+  }
+
+  body {
+    padding: 0;
+    background-image: none;
+    font-size: 10pt;
+    line-height: 1.45;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

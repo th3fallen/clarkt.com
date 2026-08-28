@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Clark Tomlinson",
+    "label": "Frontend Software Architect",
+    "image": "/headshot.jpg",
+    "email": "clark@clarkt.com",
+    "phone": "843.229.0217",
+    "url": "https://clarkt.com",
+    "summary": "Frontend architect and full-stack engineer. I set technical direction for large front-end codebases — standards, tooling, build systems, and the migration paths that get teams off legacy platforms without stopping feature work. Comfortable everywhere from a React render loop to a Go service to a Terraform module, and happiest solving problems at a scale where the simple answer stops working.",
+    "location": {
+      "city": "Charlotte",
+      "region": "NC",
+      "countryCode": "US"
+    },
+    "profiles": [
+      { "network": "GitHub", "username": "th3fallen", "url": "https://github.com/th3fallen" },
+      { "network": "LinkedIn", "username": "th3fallen", "url": "https://www.linkedin.com/in/th3fallen/" },
+      { "network": "X", "username": "th3fallen", "url": "https://twitter.com/th3fallen" }
+    ]
+  },
+  "work": [
+    {
+      "name": "When I Work",
+      "position": "Frontend Software Architect",
+      "location": "Remote",
+      "url": "https://wheniwork.com",
+      "startDate": "2023",
+      "endDate": "",
+      "summary": "Own the architecture of every front-end application — technical standards, tooling, and the shared patterns product teams build on.",
+      "highlights": [
+        "Define front-end technical standards for tooling, code, and architecture across all product teams",
+        "Provide technical leadership to multiple product front-end teams and improve how they work together",
+        "Write the technical documentation and processes for current and future platform technology",
+        "Partner with engineers across teams to find pain points and ship shared solutions"
+      ]
+    },
+    {
+      "name": "When I Work",
+      "position": "Principal Full Stack Developer",
+      "location": "Remote",
+      "startDate": "2022",
+      "endDate": "2023",
+      "summary": "Led an engineering team while driving front-end architecture and platform health across the org.",
+      "highlights": [
+        "Planned future initiatives alongside product and program management",
+        "Led an assigned team of engineers, including code review and mentorship",
+        "Maintained front-end packages, architecture, and shared patterns",
+        "Drove Architecture Guild initiatives from proposal through execution"
+      ]
+    },
+    {
+      "name": "When I Work",
+      "position": "Lead Full Stack Developer",
+      "location": "Remote",
+      "startDate": "2017",
+      "endDate": "2022",
+      "summary": "Built and led work on hourly workforce management — scheduling, time tracking, and shift trading — used by millions of managers and employees.",
+      "highlights": [
+        "Shipped features end to end, from UI through REST API and lean microservices",
+        "Optimized existing functionality for performance at production scale",
+        "Analyzed product data and iterated on what shipped"
+      ]
+    },
+    {
+      "name": "Candor Insurance",
+      "position": "Chief Architect",
+      "location": "Remote",
+      "startDate": "2017",
+      "endDate": "2018",
+      "summary": "Set the technical architecture for the platform.",
+      "highlights": []
+    },
+    {
+      "name": "When I Work",
+      "position": "Full Stack Developer",
+      "location": "Remote",
+      "startDate": "2014",
+      "endDate": "2017",
+      "summary": "Full-stack product development — beautiful UI through complex server-side applications, database architecture, and the REST API.",
+      "highlights": [
+        "Rolled out new features and reacted to product data to improve them",
+        "Worked across UI, server-side applications, database architecture, and microservices"
+      ]
+    },
+    {
+      "name": "ownCloud",
+      "position": "Software Engineer",
+      "location": "Remote",
+      "url": "https://owncloud.com",
+      "startDate": "2014",
+      "endDate": "2015",
+      "summary": "Maintained and expanded the core of the product alongside 300+ globally distributed contributors.",
+      "highlights": [
+        "Worked in OO PHP, jQuery, HTML5, CSS3, and RESTful services",
+        "Collaborated with a large open-source contributor community"
+      ]
+    },
+    {
+      "name": "INSP",
+      "position": "Web Developer",
+      "location": "Fort Mill, SC",
+      "startDate": "2013",
+      "endDate": "2014",
+      "summary": "Managed 50+ sites and the infrastructure behind them.",
+      "highlights": [
+        "Managed 500+ domains, external DNS, SSL certificates, and non-cloud server environments",
+        "Built custom plugins and sites integrating local and third-party APIs",
+        "Worked in OO PHP with Laravel components inside a WordPress ecosystem"
+      ]
+    },
+    {
+      "name": "The Inspiration Networks",
+      "position": "Web Developer",
+      "location": "Fort Mill, SC",
+      "startDate": "2011",
+      "endDate": "2013",
+      "summary": "Managed 50+ sites, DNS, certificates, and server environments.",
+      "highlights": [
+        "Built and consumed RESTful APIs",
+        "Developed custom plugins and websites in OO PHP, HTML5, CSS3, and jQuery"
+      ]
+    },
+    {
+      "name": "bitflip technologies",
+      "position": "Web Developer",
+      "location": "Charlotte, NC",
+      "startDate": "2011",
+      "endDate": "2011",
+      "summary": "Integrated sites from HTML/CSS into a custom CodeIgniter-based PHP CMS.",
+      "highlights": []
+    },
+    {
+      "name": "Cloudoru LLC",
+      "position": "Head Web Developer",
+      "location": "Remote",
+      "startDate": "2011",
+      "endDate": "2011",
+      "summary": "Oversaw a team of 5 web developers plus the CMS and servers behind the sites.",
+      "highlights": []
+    },
+    {
+      "name": "MLG, INC",
+      "position": "Web Developer",
+      "location": "New York, NY",
+      "startDate": "2008",
+      "endDate": "2009",
+      "summary": "PHP, OOP, JavaScript, Perl, MySQL, and Linux.",
+      "highlights": [
+        "Maintained existing sites and implemented new functionality",
+        "Trained employees and wrote system restoration documentation"
+      ]
+    },
+    {
+      "name": "Combat Arenas, LLC",
+      "position": "Head Web Architect",
+      "location": "Remote",
+      "startDate": "2007",
+      "endDate": "2008",
+      "summary": "Modernized legacy systems and maintained the existing product.",
+      "highlights": [
+        "Migrated a legacy MS Access application to PHP/MySQL",
+        "Restructured a large Perl program and wrote the technical documentation"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Strayer University",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science",
+      "location": "Charleston, SC",
+      "startDate": "2008",
+      "endDate": "2011"
+    }
+  ],
+  "awards": [
+    {
+      "title": "MVP Award",
+      "date": "2018",
+      "awarder": "When I Work",
+      "summary": "For leadership in architecture and the migration off the legacy platform to React/Redux."
+    },
+    {
+      "title": "Star Developer",
+      "date": "2017",
+      "awarder": "When I Work",
+      "summary": "Internal award for top performers on the engineering team."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "keywords": ["React", "TypeScript", "Redux", "CSS", "Design Systems", "Web Performance"]
+    },
+    {
+      "name": "Backend",
+      "keywords": ["Go", "PHP", "Symfony", "Python", "Django", "Node.js", "REST", "GraphQL"]
+    },
+    {
+      "name": "Platform",
+      "keywords": ["Kubernetes", "Terraform", "AWS", "Docker", "CI/CD", "Observability"]
+    },
+    {
+      "name": "Architecture",
+      "keywords": ["Monorepos", "Build Tooling", "Migration Strategy", "Technical Standards", "Mentorship"]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+---
+import { resume, yearsOfExperience } from '../data/resume';
+
+const { basics } = resume;
+const location = [basics.location?.city, basics.location?.region].filter(Boolean).join(', ');
+const years = yearsOfExperience(resume.work);
+---
+
+<header class="header">
+  <div class="header__identity">
+    {
+      basics.image && (
+        <img
+          class="header__avatar"
+          src={basics.image}
+          alt=""
+          width="144"
+          height="144"
+          loading="eager"
+          decoding="async"
+        />
+      )
+    }
+
+    <div>
+      <h1 class="header__name">
+        {basics.name}<span class="header__cursor" aria-hidden="true"></span>
+      </h1>
+      <p class="header__label">{basics.label}</p>
+    </div>
+  </div>
+
+  <dl class="header__meta">
+    <div class="header__meta-item">
+      <dt>location</dt>
+      <dd>{location}</dd>
+    </div>
+    <div class="header__meta-item">
+      <dt>experience</dt>
+      <dd>{years}+ years</dd>
+    </div>
+    <div class="header__meta-item">
+      <dt>status</dt>
+      <dd><span class="header__pulse" aria-hidden="true"></span>{resume.work[0]?.name}</dd>
+    </div>
+  </dl>
+
+  {
+    basics.profiles && basics.profiles.length > 0 && (
+      <ul class="header__links">
+        {basics.profiles.map((profile) => (
+          <li>
+            <a href={profile.url} rel="me noopener" target="_blank">
+              {profile.network.toLowerCase()}
+            </a>
+          </li>
+        ))}
+        {basics.email && (
+          <li>
+            <a href={`mailto:${basics.email}`}>email</a>
+          </li>
+        )}
+      </ul>
+    )
+  }
+</header>
+
+<style>
+  .header {
+    padding-bottom: clamp(2rem, 5vw, 3rem);
+  }
+
+  .header__identity {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .header__avatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-strong);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .header__name {
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.25rem);
+    letter-spacing: -0.03em;
+  }
+
+  .header__cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    margin-left: 0.15em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    box-shadow: 0 0 12px var(--accent-glow);
+    animation: blink 1.2s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .header__label {
+    margin: 0.35rem 0 0;
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+
+  .header__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .header__meta-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75ch;
+    font-size: 0.8rem;
+  }
+
+  .header__meta dt {
+    color: var(--fg-subtle);
+  }
+
+  .header__meta dt::after {
+    content: ':';
+  }
+
+  .header__meta dd {
+    margin: 0;
+    color: var(--fg);
+  }
+
+  .header__pulse {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.6ch;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent-glow);
+    animation: pulse 2.5s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    70% {
+      box-shadow: 0 0 0 0.4rem transparent;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  .header__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .header__links a {
+    text-decoration: none;
+  }
+
+  .header__links a::before {
+    content: '→ ';
+    color: var(--fg-subtle);
+  }
+
+  .header__links a:hover {
+    text-decoration: underline;
+  }
+
+  @media print {
+    .header__cursor,
+    .header__pulse {
+      display: none;
+    }
+
+    .header__meta {
+      background: transparent;
+    }
+  }
+</style>

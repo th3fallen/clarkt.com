@@ -1,0 +1,97 @@
+---
+// Renders both glyphs and lets CSS pick which one is visible, so the button is
+// correct on first paint without waiting for JS.
+---
+
+<button
+  id="theme-toggle"
+  class="toggle no-print"
+  type="button"
+  aria-label="Toggle color theme"
+  title="Toggle color theme"
+>
+  <span class="toggle__glyph toggle__glyph--dark" aria-hidden="true">☾</span>
+  <span class="toggle__glyph toggle__glyph--light" aria-hidden="true">☀</span>
+</button>
+
+<style>
+  .toggle {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    color: var(--fg-muted);
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease;
+  }
+
+  .toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+
+  .toggle__glyph {
+    grid-area: 1 / 1;
+  }
+
+  /* Light theme active -> offer the moon. Dark active -> offer the sun. */
+  .toggle__glyph--light {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .toggle__glyph--dark {
+      display: none;
+    }
+
+    :root:not([data-theme='light']) .toggle__glyph--light {
+      display: block;
+    }
+  }
+
+  :root[data-theme='dark'] .toggle__glyph--dark {
+    display: none;
+  }
+
+  :root[data-theme='dark'] .toggle__glyph--light {
+    display: block;
+  }
+
+  :root[data-theme='light'] .toggle__glyph--dark {
+    display: block;
+  }
+
+  :root[data-theme='light'] .toggle__glyph--light {
+    display: none;
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+
+  toggle?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = root.dataset.theme ?? (systemPrefersDark ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    root.dataset.theme = next;
+
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      /* storage blocked — the choice just won't survive a reload */
+    }
+  });
+</script>

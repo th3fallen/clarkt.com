@@ -1,0 +1,86 @@
+---
+import { resume } from '../data/resume';
+---
+
+<div class="skills">
+  {
+    resume.skills.map((skill) => (
+      <div class="skill">
+        <h3 class="skill__name">{skill.name}</h3>
+        <ul class="skill__tags">
+          {skill.keywords?.map((keyword) => (
+            <li class="tag">{keyword}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .skills {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 40rem) {
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem 2.5rem;
+    }
+  }
+
+  .skill__name {
+    margin-bottom: 0.65rem;
+    color: var(--fg-subtle);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: lowercase;
+  }
+
+  .skill__name::before {
+    content: '# ';
+    color: var(--accent);
+  }
+
+  .skill__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.6rem;
+    background: var(--bg-inset);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--fg-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .tag:hover {
+    color: var(--fg);
+    border-color: var(--border-strong);
+  }
+
+  @media print {
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 2rem;
+    }
+
+    .tag {
+      padding: 0;
+      background: transparent;
+      border: 0;
+    }
+
+    .tag:not(:last-child)::after {
+      content: ',';
+    }
+  }
+</style>
