@@ -4,5 +4,12 @@ dist/
 .DS_Store
 .env
 .env.production
-linkedin-export/
 .omc/
+
+# LinkedIn data exports — personal data, never commit
+linkedin-export/
+*LinkedInDataExport*
+Positions.csv
+Profile.csv
+Education.csv
+Skills.csv

@@ -5,18 +5,29 @@
     "label": "Frontend Software Architect",
     "image": "/headshot.jpg",
     "email": "clark@clarkt.com",
-    "phone": "843.229.0217",
     "url": "https://clarkt.com",
-    "summary": "Frontend architect and full-stack engineer. I set technical direction for large front-end codebases — standards, tooling, build systems, and the migration paths that get teams off legacy platforms without stopping feature work. Comfortable everywhere from a React render loop to a Go service to a Terraform module, and happiest solving problems at a scale where the simple answer stops working.",
+    "summary": "Frontend architect and full-stack engineer. I set technical direction for large front-end codebases \u2014 standards, tooling, build systems, and the migration paths that get teams off legacy platforms without stopping feature work. Comfortable everywhere from a React render loop to a Go service to a Terraform module, and happiest solving problems at a scale where the simple answer stops working.",
     "location": {
       "city": "Charlotte",
       "region": "NC",
       "countryCode": "US"
     },
     "profiles": [
-      { "network": "GitHub", "username": "th3fallen", "url": "https://github.com/th3fallen" },
-      { "network": "LinkedIn", "username": "th3fallen", "url": "https://www.linkedin.com/in/th3fallen/" },
-      { "network": "X", "username": "th3fallen", "url": "https://twitter.com/th3fallen" }
+      {
+        "network": "GitHub",
+        "username": "th3fallen",
+        "url": "https://github.com/th3fallen"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "th3fallen",
+        "url": "https://www.linkedin.com/in/th3fallen/"
+      },
+      {
+        "network": "X",
+        "username": "th3fallen",
+        "url": "https://twitter.com/th3fallen"
+      }
     ]
   },
   "work": [
@@ -27,7 +38,7 @@
       "url": "https://wheniwork.com",
       "startDate": "2023",
       "endDate": "",
-      "summary": "Own the architecture of every front-end application — technical standards, tooling, and the shared patterns product teams build on.",
+      "summary": "Own the architecture of every front-end application \u2014 technical standards, tooling, and the shared patterns product teams build on.",
       "highlights": [
         "Define front-end technical standards for tooling, code, and architecture across all product teams",
         "Provide technical leadership to multiple product front-end teams and improve how they work together",
@@ -55,7 +66,7 @@
       "location": "Remote",
       "startDate": "2017",
       "endDate": "2022",
-      "summary": "Built and led work on hourly workforce management — scheduling, time tracking, and shift trading — used by millions of managers and employees.",
+      "summary": "Built and led work on hourly workforce management \u2014 scheduling, time tracking, and shift trading \u2014 used by millions of managers and employees.",
       "highlights": [
         "Shipped features end to end, from UI through REST API and lean microservices",
         "Optimized existing functionality for performance at production scale",
@@ -77,7 +88,7 @@
       "location": "Remote",
       "startDate": "2014",
       "endDate": "2017",
-      "summary": "Full-stack product development — beautiful UI through complex server-side applications, database architecture, and the REST API.",
+      "summary": "Full-stack product development \u2014 beautiful UI through complex server-side applications, database architecture, and the REST API.",
       "highlights": [
         "Rolled out new features and reacted to product data to improve them",
         "Worked across UI, server-side applications, database architecture, and microservices"
@@ -191,19 +202,48 @@
   "skills": [
     {
       "name": "Frontend",
-      "keywords": ["React", "TypeScript", "Redux", "CSS", "Design Systems", "Web Performance"]
+      "keywords": [
+        "React",
+        "TypeScript",
+        "Redux",
+        "CSS",
+        "Design Systems",
+        "Web Performance"
+      ]
     },
     {
       "name": "Backend",
-      "keywords": ["Go", "PHP", "Symfony", "Python", "Django", "Node.js", "REST", "GraphQL"]
+      "keywords": [
+        "Go",
+        "PHP",
+        "Symfony",
+        "Python",
+        "Django",
+        "Node.js",
+        "REST",
+        "GraphQL"
+      ]
     },
     {
       "name": "Platform",
-      "keywords": ["Kubernetes", "Terraform", "AWS", "Docker", "CI/CD", "Observability"]
+      "keywords": [
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "Docker",
+        "CI/CD",
+        "Observability"
+      ]
     },
     {
       "name": "Architecture",
-      "keywords": ["Monorepos", "Build Tooling", "Migration Strategy", "Technical Standards", "Mentorship"]
+      "keywords": [
+        "Monorepos",
+        "Build Tooling",
+        "Migration Strategy",
+        "Technical Standards",
+        "Mentorship"
+      ]
     }
   ]
 }

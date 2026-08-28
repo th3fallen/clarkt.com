@@ -8,11 +8,11 @@ requests are the headshot and the webfont.
 ## Develop
 
 ```bash
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # -> dist/
-npm run preview  # serve dist/ locally
-npm run check    # astro + typescript diagnostics
+pnpm install
+pnpm dev      # http://localhost:4321
+pnpm build    # -> dist/
+pnpm preview  # serve dist/ locally
+pnpm check    # astro + typescript diagnostics
 ```
 
 ## Editing content
@@ -41,11 +41,14 @@ What works instead is their data export:
 1. LinkedIn → **Settings & Privacy → Data privacy → Get a copy of your data**
 2. Choose "Want something in particular?" and tick **Positions**, **Education**,
    **Skills**
-3. LinkedIn emails a download link, usually within ~10 minutes
+3. LinkedIn emails a download link. **You get two archives**: a fast one within
+   minutes containing only `Profile.csv`, and the complete one an hour or so
+   later. The importer needs the second — the one that actually has
+   `Positions.csv` in it.
 4. Run the importer:
 
 ```bash
-npm run import:linkedin -- ~/Downloads/Basic_LinkedInDataExport.zip --dry-run
+pnpm import:linkedin ~/Downloads/Basic_LinkedInDataExport.zip --dry-run
 ```
 
 Drop `--dry-run` to write. It accepts either the `.zip` or an unzipped directory.
@@ -80,11 +83,11 @@ Every run prints what it changed. Review the diff before committing.
 
 ## Deploy
 
-Static output in `dist/`. The domain is already on Cloudflare DNS, so Cloudflare
-Pages is the least-friction target:
+Deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to
+`main`. The workflow installs with a frozen lockfile, typechecks, builds, and
+publishes `dist/` — no `gh-pages` branch and no committed build output.
 
-- Build command: `npm run build`
-- Output directory: `dist`
-- Node version: 22
+Pull requests build and typecheck but never publish.
 
-Any static host works — there is no server-side runtime.
+Nothing here needs a server-side runtime, so any static host works if you ever
+move off Pages.
