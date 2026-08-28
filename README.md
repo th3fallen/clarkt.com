@@ -83,11 +83,20 @@ Every run prints what it changed. Review the diff before committing.
 
 ## Deploy
 
-Deployed to GitHub Pages by `.github/workflows/deploy.yml` on every push to
-`main`. The workflow installs with a frozen lockfile, typechecks, builds, and
-publishes `dist/` — no `gh-pages` branch and no committed build output.
+Deployed to Cloudflare as static assets:
 
-Pull requests build and typecheck but never publish.
+```bash
+pnpm build
+pnpm dlx wrangler deploy
+```
 
-Nothing here needs a server-side runtime, so any static host works if you ever
-move off Pages.
+`wrangler.jsonc` has no `main`, so no Worker script runs — Cloudflare serves the
+files in `dist/` directly from the edge.
+
+Keep that config file committed. `wrangler deploy` runs an interactive
+auto-config when it finds no config, and in a non-interactive build it answers
+its own prompts: it will add an SSR adapter and write a Worker name derived from
+the repo directory. Since this repo is named `clarkt.com` and Worker names
+cannot contain dots, that generates a config it then rejects.
+
+Nothing here needs a server-side runtime, so any static host works.
